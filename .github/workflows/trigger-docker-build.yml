@@ -10,5 +10,5 @@ jobs:
   call-repo2:
     uses: abhishekyadav-max/two/.github/workflows/docker-build.yml@main
     with:
-      environment: stage  # Cannot use env.ENVIRONMENT here
+      environment: stage  
     secrets: inherit
