@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write    # 🔥 This is what was missing
-  contents: read     # (optional, often needed for checkout)
+  id-token: write  
+  contents: read     
 
 jobs:
   call-repo2:
