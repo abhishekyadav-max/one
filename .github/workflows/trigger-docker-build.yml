@@ -3,6 +3,10 @@ name: Trigger Docker Build in Repo Two
 on:
   workflow_dispatch:
 
+permissions:
+  id-token: write    # 🔥 This is what was missing
+  contents: read     # (optional, often needed for checkout)
+
 jobs:
   call-repo2:
     uses: abhishekyadav-max/two/.github/workflows/docker-build.yml@main
