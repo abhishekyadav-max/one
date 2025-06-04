@@ -1,15 +1,26 @@
 name: Trigger Docker Build in Repo Two
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Manual trigger from GitHub UI
 
+# ✅ Permissions must be at root
 permissions:
-  id-token: write  
-  contents: read     
+  id-token: write       # Needed if the reusable workflow uses OIDC (e.g., AWS login)
+  contents: read        # Allows read access to the repo
 
 jobs:
   call-repo2:
+    # 🔁 Call the reusable workflow from another repo
     uses: abhishekyadav-max/two/.github/workflows/docker-build.yml@main
+
+    # 🧪 Pass input values to the reusable workflow
     with:
       environment: stage
+
+    # 🔐 Inherit secrets (like AWS credentials, tokens)
     secrets: inherit
+
+    # ✅ You can ALSO set permissions inside the job to override (optional)
+    permissions:
+      id-token: write
+      contents: read
